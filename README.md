@@ -1,4 +1,4 @@
-# Tauri + Vanilla
+# Tauri + GameSalad
 
 This template should help get you started developing with Tauri and GameSalad HTML5
 
