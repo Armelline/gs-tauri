@@ -17,7 +17,7 @@ const { resolveResource } = window.__TAURI__.path;
 			});
 			engine.loadOptionsFromURL();
 			
-			const resourcePath = await resolveResource('resources/game/default');
+			const resourcePath = (await resolveResource('resources/game/default')).replaceAll('\\', '/');
 			const assetUrl = convertFileSrc(resourcePath)
 			engine.play(assetUrl);
 		});
