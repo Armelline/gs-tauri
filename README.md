@@ -70,21 +70,21 @@ Download your GameSalad HTML5 package and place files as follows:
 | game                | src-tauri/resources/game | Game Project. Differnt so it's not compiled into the binary |
 | css                 | src/assets/css           | CSS. Optional since it doesn't change often and are already included |
 
-Note you want to copy the “default” folder from the “game” folder in your HTML5 project into the “game” folder at src-tauri/resources. In my case I end up with this folder path:
+Note you want to copy the ```default``` folder from the ```game``` folder in your HTML5 project into the ```game``` folder at ```src-tauri/resources```. In my case I end up with this folder path:
 
 ```C:\Tauri\gs-tauri\src-tauri\resources\game\default```
 
-When you copy the game folder, that’s the majority of your game. Inside that folder are the images, sounds, all the actor and scene information.
+When you copy the ```game``` folder, that’s the majority of your game. Inside that folder are the images, sounds, all the actor and scene information.
 
-The ones you need to be absolutely certain you copy correctly are the “gs-export.js” file and the “default” folder. The loading image is needed if you included a custom one during publishing. The CSS files rarely change but you should copy them to be safe.
+The ones you need to be absolutely certain you copy correctly are the ```gs-export.js``` file and the ```default``` folder. The loading image is needed if you included a custom one during publishing. The CSS files rarely change and I normally skip them.
 
 Replace the files in each location if they already exist.
 
-*Also note that if you choose to bundle the resources in the outputted .exe file, you'll be moving the resources file later. That's covered below, though. For now, put things as shown above.*
+*Also note that if you choose to bundle the resources in the outputted .exe file, you'll be moving the resources file later. That's covered below, though. For now, put things as shown above. It makes initial testing much easier.*
 
 ## Edit the “tauri.conf.json” file.
 
-Before you can do your first test compilation, you need to make an edit to the “tauri.conf” file. If you attempt to test the build now, it will fail. There are other edits you’ll need want to make to this file, but those will be explained and added later. For now, the aim is just to get a first test running.
+Before you can do your first test compilation, you need to make an edit to the ```tauri.conf.json``` file. If you attempt to test the build now, it will fail. There are other edits you’ll need want to make to this file, but those will be explained and added later. For now, the aim is just to get a first test running.
 
 You’ll find the tauri.conf.json file in the ```gs-tauri/src-tauri``` folder.
 
@@ -246,6 +246,8 @@ I put an empty ```resources``` directory in already, so just copy your game to i
 | GameSalad HTML5     | Tauri Project            | Note                          |
 | ------------------- | ------------------------ | ----------------------------- |
 | game                | src/resources/game | Game Project. Now compilled into the binary. |
+
+Again, note you want to copy the “default” folder from the “game” folder in your HTML5 project into the “game” folder at ```src/resources```.
 
 There's no real harm in having your game in both the ```src-tauri/resources``` folder and the ```src/resources``` folder. Only one or the other will ever get used, depending on if you run ```dev``` or ```build```. Just remember to update whichever one you're going to run if you have a new version of your game to test!
 
