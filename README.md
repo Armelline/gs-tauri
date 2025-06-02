@@ -319,7 +319,7 @@ There are a few changes made if you want to compare the files. Please feel free 
 
 ```delegate.js``` adds code to handle the quit and window resizing.
 
-```main.js``` adds code to change the resource path used depending on if ```dev``` or ```build``` mode is detected. This just helps reduce the number of steps you need to switch between modes.
+```main.js``` adds code to change the resource path used depending on if ```dev``` or ```build``` mode is detected. This just helps reduce the number of steps you need to switch between modes. If you know how to make ```dev``` work with the resources in ```src``` please tell me and I'll happily update the repo! :D
 
 ```tauri.conf.json``` adds a few line to make Tauri more permissive with window changes.
 
