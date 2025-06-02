@@ -234,7 +234,9 @@ Delete this section near the bottom of the file:
 
 I also recommend you *delete the ```target``` folder that was created in your ```src-tauri``` folder any time you switch between ```dev``` and ```build``` as Tauri caches some files that can lead to misleading tests.
 
-Once you've done that, head back to your Git Bash window (or open a new one using the method explained above, if you closed the last one - just remember you need have navigated to the ```gs-tauri``` folder).
+**2. Build the game and installer!** 
+
+Head back to your Git Bash window (or open a new one using the method explained above, if you closed the last one - just remember you need have navigated to the ```gs-tauri``` folder).
 
 Run this command:
 
