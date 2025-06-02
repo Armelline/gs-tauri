@@ -82,7 +82,7 @@ Replace the files in each location if they already exist.
 
 *Also note that if you choose to bundle the resources in the outputted .exe file, you'll be moving the resources file later. That's covered below, though. For now, put things as shown above. It makes initial testing much easier.*
 
-## Edit the “tauri.conf.json” file.
+## Edit the ```tauri.conf.json``` file.
 
 Before you can do your first test compilation, you need to make an edit to the ```tauri.conf.json``` file. If you attempt to test the build now, it will fail. There are other edits you’ll need want to make to this file, but those will be explained and added later. For now, the aim is just to get a first test running.
 
