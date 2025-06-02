@@ -316,9 +316,13 @@ Don't forget you can also just look at the way the buttons are set up in the [sa
 There are a few changes made if you want to compare the files. Please feel free to suggest any improvements!
 
 ```main.rs``` adds a bit of code to handle the quit button. I'm honestly not certain it's necessary as it was one of the first things I did and it might have been supplanted by other changes later.
+
 ```delegate.js``` adds code to handle the quit and window resizing.
+
 ```main.js``` adds code to change the resource path used depending on if ```dev``` or ```build``` mode is detected. This just helps reduce the number of steps you need to switch between modes.
+
 ```tauri.conf.json``` adds a few line to make Tauri more permissive with window changes.
+
 ```src/resources/game/``` is added to make it clearer where you need to put your game files for ```build``` mode.
 
 ## Final Words
