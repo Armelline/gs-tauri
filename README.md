@@ -51,9 +51,11 @@ That’s the setup complete!
 
 ## Generate an HTML5 project.
 
-If you haven’t done so already, you’ll need to generate an HTML5 version of your game. See other GameSalad resources if you need help in doing that. We’re going to assume you’ve uploaded your game, Published it as an HTML5 project, and downloaded the resulting zip file. 
+If you haven’t done so already, you’ll need to generate an HTML5 version of your game. See other GameSalad resources if you need help in doing that. We’re going to assume you’ve used the sample project for now, though, as it's quicker and easier to get things set up and learn how everything works using that. I recommend running through this tutorial using the sample project and then running through the steps below again with your own game once you've successfully completed everything with the sample. At the end are some instructions on how to set up the buttons in your own project. Feel free to skip ahead and set up the buttons first if you want, then continuing with the tutorial.
 
-You'll probably want to use the sample project [linked above](https://github.com/Armelline/SampleGamesaladProjects/blob/main/TauriButtons.zip) for your initial setup and testing.
+Published the GameSalad game as an HTML5 project, and downloaded the resulting zip file. Unzip it and you'll find a folder containing the files and folders you'll need in the next step.
+
+*You'll probably want to use the sample project [linked above](https://github.com/Armelline/SampleGamesaladProjects/blob/main/TauriButtons.zip) for your initial setup and testing.*
 
 ## Copy the relevant files from your GameSalad HTML5 project to the gs-tauri folder.
 
@@ -120,7 +122,7 @@ After a few minutes (how long depends on the size of your game), your game shoul
 
 Assuming you read the warning above, you should be able to do some tests of your game and then exit it using them method explained. But that’s really not an ideal situation to put a player in! There are two ways you can avoid it. One is by adding a Quit button to your game, which we’ll cover later, and the other is to just start the game in Windowed mode. You can do the latter by editing the ```tauri.conf.json``` file, which is explore below.
 
-*Note: If you’re doing this tutorial with the demo project provided, the buttons WILL NOT work at this stage. That’s coming later!*
+*Note: If you’re doing this tutorial with the demo project provided, the buttons SHOULD work at this stage. Be sure to test them both out!*
 
 
 ## More editing of “tauri.conf”
@@ -206,10 +208,80 @@ Finally, there's the installer icon. I just copied the app icon.
 
 Make sure they're named:
 
-
     installer-header.bmp
     installer-sidebar.bmp
     installer.ico
 
 You can use different names if you want, but you'll need to remember to change the names in the edits to ```tauri.conf.json``` we're going to make in a moment.
 
+## Full Build with Installer
+
+It’s time to build a proper version of your game, Windows installer and all!
+
+Here's where things get a little tricky. As mentioned, this repo specifically bundles the resources for your game in the .exe file. If you want to have them in a separate ```resources``` folder in your install directory, you can skip ahead to 3 below.
+
+If you want to bundle the resources in the .exe, the ```resources``` folder needs to be places in the ```src``` directory. However, this will break ```dev``` mode. As far as I can tell, you can only bundle the ```resources``` folder if it's in ```src```, but you can only test in ```dev``` mode if it's in ```src-tauri```. This means you have to juggle things around a bit when you're finished testing and want to generate your installer.
+
+**1. More ```tauri.conf.json``` edits.**
+
+You need to remove the section of ```tauri.conf.json``` that tells Tauri to bundle the resources separately. Find this part of the ```tauri.conf.json``` file and **remove it entirely**. There is no way to comment out a section of the ```tauri.conf.json``` file so you'll need to remove it and then save the file. If you want to use ```dev``` to test more, you'll have to add it back in. I recommend making a backup of your ```tauri.conf.json``` file before removing it so you can more easily add it back if needed.
+
+Delete this section near the bottom of the file:
+
+      "resources": [
+        "resources/**"
+      ],
+
+I also recommend you *delete the ```target``` folder that was created in your ```src-tauri``` folder any time you switch between ```dev``` and ```build``` as Tauri caches some files that can lead to misleading tests.
+
+Once you've done that, head back to your Git Bash window (or open a new one using the method explained above, if you closed the last one - just remember you need have navigated to the ```gs-tauri``` folder).
+
+Run this command:
+
+    npm run tauri build
+
+You’ll get a bunch of compiling messages again. This whole process will take a lot longer than last time as it’s generating installers too, but shouldn’t be more than a few minutes even with a large game.
+
+It will generate two types of installers - MSI and NSIS. Both work fine in Windows, but Steam much prefer an NSIS installer, so that’s the one we’re going to assume you want. Both will be generated either way, though!
+
+When the compiling is complete, you’ll find your installers in this directory:
+
+    gs-tauri/src-tauri/target/release/bundle/
+
+For me, that means I want this file:
+
+    C:\gs-tauri\src-tauri\target\release\bundle\nsis\Your-Game-Name_1.0.0_x64-setup.nsis
+
+Run it to install your game!
+
+That’s it, you have now successfully converted your game from an HTML5 project to a Windows application!
+
+
+## Set-up in the GameSalad project
+
+You'll want to add two buttons to your game. A “Quit” button and a button toggle between Fullscreen and Windowed mode. You don't need to use either if you don't want to - but you'd probably not be reading this tutorial if you don't.
+
+Since you have a GameSalad game ready to publish, I’m going to assume you don’t need walking through adding a button in GameSalad with any detail.
+
+Add an actor to serve as your Quit button and add the following code (adapting as necessary for your game - the only vital part is the Tweet Sheet behaviour gets triggered when the quit button is pressed).
+
+Add a Tweet Sheet behaviour with the text ```EndGame``` in the “Message” section. Although there's no reason to change it, this text can be anything you want. It *is* case sensitive. If you do change it, you'll need to change it in the ```delegate.js``` file too.
+
+For the button to toggle between Fullscreen and Windowed, it’s the exact same process as the Quit button, except we use a slightly different message in the TweetSheet behaviour.
+
+Add a Tweet Sheet behaviour with the text “WindowChange” in the “Message” section. Again it can be anything (except whatever you used for the quit button) as long as you’re consistent in later steps.
+
+Don't forget you can also just look at the way the buttons are set up in the [sample project](https://github.com/Armelline/SampleGamesaladProjects/blob/main/TauriButtons.zip).
+
+
+## Final Words
+
+That's it! You should now have a Windows game with branded installer, quit button, window mode toggle button and bundled resources.
+
+Be warned that Tauri is super sensitive and even the slightest thing can throw up errors. If you don't follow the tutorial precisely you'll probably end up pulling your hair out and asking ChatGPT what errors mean. The most likley one you'll encounter will be:
+
+* Errors relating to missing or additional commas in ```tauri.conf.json```. Check the quoted line and make the change required. If you're stuck, chuck your ```tauri.conf.json``` into ChatGPT and ask it what you did wrong. Be sure to specify you're looking for syntax errors, though, as ChatGPT will just make up new sections it might want you to add.
+* A black screen when you run ```npm run tauri dev``` - you probably forgot to revert the "Full Build with Installer" section above. Delete the ```target``` folder, revert the ```tauri.conf.json``` deletion and try again.
+* Missing icons or invalid file formats for the installer images. Make sure they're in the ```gs-tauri/src-tauri/icons/``` folder and in the right format.
+
+I hope you have great success releasing your game for Windows! At some point I'll update this guide for Linux too, but the only thing that will really change is the file paths and OS. The actual code will all be exactly the same, with the possible exception of the installer images section of the ```tauri.conf.json``` which might need replacing.
