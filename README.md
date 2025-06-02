@@ -311,6 +311,16 @@ Add a Tweet Sheet behaviour with the text “WindowChange” in the “Message�
 Don't forget you can also just look at the way the buttons are set up in the [sample project](https://github.com/Armelline/SampleGamesaladProjects/blob/main/TauriButtons.zip).
 
 
+## What's different between this repo and the starting GameSalad repo?
+
+There are a few changes made if you want to compare the files. Please feel free to suggest any improvements!
+
+```main.rs``` adds a bit of code to handle the quit button. I'm honestly not certain it's necessary as it was one of the first things I did and it might have been supplanted by other changes later.
+```delegate.js``` adds code to handle the quit and window resizing.
+```main.js``` adds code to change the resource path used depending on if ```dev``` or ```build``` mode is detected. This just helps reduce the number of steps you need to switch between modes.
+```tauri.conf.json``` adds a few line to make Tauri more permissive with window changes.
+```src/resources/game/``` is added to make it clearer where you need to put your game files for ```build``` mode.
+
 ## Final Words
 
 That's it! You should now have a Windows game with branded installer, quit button, window mode toggle button and bundled resources.
@@ -322,3 +332,6 @@ Be warned that Tauri is super sensitive and even the slightest thing can throw u
 * Missing icons or invalid file formats for the installer images. Make sure they're in the ```gs-tauri/src-tauri/icons/``` folder and in the right format.
 
 I hope you have great success releasing your game for Windows! At some point I'll update this guide for Linux too, but the only thing that will really change is the file paths and OS. The actual code will all be exactly the same, with the possible exception of the installer images section of the ```tauri.conf.json``` which might need replacing.
+
+
+
