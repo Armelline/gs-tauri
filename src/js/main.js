@@ -17,9 +17,18 @@ const { resolveResource } = window.__TAURI__.path;
 			});
 			engine.loadOptionsFromURL();
 			
-			const resourcePath = (await resolveResource('resources/game/default')).replaceAll('\\', '/');
-			const assetUrl = convertFileSrc(resourcePath)
-			engine.play(assetUrl);
+   const isDev = window.location.protocol === 'http:' &&
+           (window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1' ||
+            window.location.port === '1430');
+
+         if (isDev) {
+		   const resourcePath = (await resolveResource('resources/game/default')).replaceAll('\\', '/');
+		   const assetUrl = convertFileSrc(resourcePath)
+		   engine.play(assetUrl);		
+         } else {
+		   engine.play('resources/game/default');
+         }
 		});
 	};
 

@@ -10,7 +10,9 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false,
+      "window": {
+        "all": true
+	  },
       "path": {
         "all": true
       },
@@ -44,7 +46,14 @@
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
-      ]
+      ],
+  	"windows": {
+      "nsis": {
+        "headerImage": "icons/installer-header.bmp",
+        "sidebarImage": "icons/installer-sidebar.bmp",
+        "installerIcon": "icons/installer.ico"
+      }
+     }
     }
   }
 }

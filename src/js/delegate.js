@@ -18,6 +18,31 @@ window.gsInitDelegates = function (engine) {
 
     onWindowResize: function() {
       engine.relayout();
-    }
+    },
+    
+	onTweetSheet: async function (message, image) {
+
+            const { invoke } = window.__TAURI__.tauri;
+
+            if (message === "EndGame") {
+                 invoke("exit_app");
+          }
+
+         if (message === "WindowChange") {
+
+           const { appWindow } = window.__TAURI__.window;
+
+           try {
+             const isFullscreen = await appWindow.isFullscreen();
+             await appWindow.setFullscreen(!isFullscreen);
+
+             //  Trigger GameSalad relayout manually after fullscreen change
+             window.dispatchEvent(new Event("resize"));
+
+           } catch (err) {
+             console.error("Error toggling window mode:", err);
+           }
+         }
+       }
   }
 }
