@@ -13,6 +13,7 @@ This template includes some additional features:
 
 An accompanying GameSalad project file that shows how to trigger the Quit and Window Mode within your game itself can be found here: https://github.com/Armelline/SampleGamesaladProjects/blob/main/TauriButtons.zip
 
+
 ## Getting Set Up
 
 **1. Install requirements.**
@@ -48,6 +49,7 @@ Type in and run the following  command:
 Wait for the required packages be installed. You don’t need to do anything in this step normally, but if it asks you for permission to do anything, go ahead and grant it.
 
 That’s the setup complete!
+
 
 ## Generate an HTML5 project.
 
@@ -103,6 +105,7 @@ Find this section near the bottom of the file:
 Edit ```com.tauri.dev``` to something unique to your game. Normally you’ll go with com.companyname.gamename. I use the same as the Bundle ID I used when publishing to the Apple App Store. For example you might change it to ```com.armelline.example```.
 
 Be sure to save when you’re done!
+
 
 ## First test build!
 
@@ -177,6 +180,7 @@ There are lots of other window settings you can explore and test. Be a little ca
 
     Error unable to parse JSON Tauri config file at C:\Tauri\gs-tauri\src-tauri\tauri.conf.json because expected `,` or `}` at line 27 column 9
 
+
 ## Icons and Installer Images!
 
 **1. Icons.**
@@ -214,15 +218,16 @@ Make sure they're named:
 
 You can use different names if you want, but you'll need to remember to change the names in the edits to ```tauri.conf.json``` we're going to make in a moment.
 
+
 ## Full Build with Installer
 
 It’s time to build a proper version of your game, Windows installer and all!
 
-Here's where things get a little tricky. As mentioned, this repo specifically bundles the resources for your game in the .exe file. If you want to have them in a separate ```resources``` folder in your install directory, you can skip ahead to 3 below.
+Here's where things get a little tricky. As mentioned, this repo specifically bundles the resources for your game in the .exe file. If you want to have them in a separate ```resources``` folder in your install directory, you can skip ahead to step 3 below.
 
 If you want to bundle the resources in the .exe, the ```resources``` folder needs to be places in the ```src``` directory. However, this will break ```dev``` mode. As far as I can tell, you can only bundle the ```resources``` folder if it's in ```src```, but you can only test in ```dev``` mode if it's in ```src-tauri```. This means you have to juggle things around a bit when you're finished testing and want to generate your installer.
 
-**1. More ```tauri.conf.json``` edits.**
+**1. More ```tauri.conf.json``` edits to ensure resources are bundled.**
 
 You need to remove the section of ```tauri.conf.json``` that tells Tauri to bundle the resources separately. Find this part of the ```tauri.conf.json``` file and **remove it entirely**. There is no way to comment out a section of the ```tauri.conf.json``` file so you'll need to remove it and then save the file. If you want to use ```dev``` to test more, you'll have to add it back in. I recommend making a backup of your ```tauri.conf.json``` file before removing it so you can more easily add it back if needed.
 
@@ -234,7 +239,17 @@ Delete this section near the bottom of the file:
 
 I also recommend you *delete the ```target``` folder that was created in your ```src-tauri``` folder any time you switch between ```dev``` and ```build``` as Tauri caches some files that can lead to misleading tests.
 
-**2. Build the game and installer!** 
+**2. Move the ```resources``` folder to the ```src``` folder.
+
+I put an empty ```resources``` directory in already, so just copy your game to it.
+
+| GameSalad HTML5     | Tauri Project            | Note                          |
+| ------------------- | ------------------------ | ----------------------------- |
+| game                | src/resources/game | Game Project. Now compilled into the binary. |
+
+There's no real harm in having your game in both the ```src-tauri/resources``` folder and the ```src/resources``` folder. Only one or the other will ever get used, depending on if you run ```dev``` or ```build```. Just remember to update whichever one you're going to run if you have a new version of your game to test!
+
+**3. Build the game and installer!** 
 
 Head back to your Git Bash window (or open a new one using the method explained above, if you closed the last one - just remember you need have navigated to the ```gs-tauri``` folder).
 
@@ -257,6 +272,24 @@ For me, that means I want this file:
 Run it to install your game!
 
 That’s it, you have now successfully converted your game from an HTML5 project to a Windows application!
+
+**4. Change back to ```dev``` compatibility.**
+
+If you've made changes to your game and want to test using ```dev``` again, simply revert the last two changes. 
+
+Ensure you have the latest version of your HTML5 generated game in ```src-tauri/resources```.
+
+Add this section back into your ```tauri.conf.json```:
+
+      "resources": [
+        "resources/**"
+      ],
+
+*NOTE: It must be added back to the same place. It's easiest to just paste it directly below this line:
+
+    "identifier": "com.tauri.dev",
+
+Delete the ```src-tauri/target``` folder before generating again. Cached files can really throw off testing!
 
 
 ## Set-up in the GameSalad project
