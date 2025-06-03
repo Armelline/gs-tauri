@@ -334,6 +334,7 @@ Be warned that Tauri is super sensitive and even the slightest thing can throw u
 * Errors relating to missing or additional commas in ```tauri.conf.json```. Check the quoted line and make the change required. If you're stuck, chuck your ```tauri.conf.json``` into ChatGPT and ask it what you did wrong. Be sure to specify you're looking for syntax errors, though, as ChatGPT will just make up new sections it might want you to add.
 * A black screen when you run ```npm run tauri dev``` - you probably forgot to revert the "Full Build with Installer" section above. Delete the ```target``` folder, revert the ```tauri.conf.json``` deletion and try again.
 * Missing icons or invalid file formats for the installer images. Make sure they're in the ```gs-tauri/src-tauri/icons/``` folder and in the right format.
+* If you do any of the file editing on macOS, keep in mind that macOS *loves* to automatically replace " with “. Tauri/json files care about the difference. So keep an eye on them.
 
 I hope you have great success releasing your game for Windows! At some point I'll update this guide for Linux too, but the only thing that will really change is the file paths and OS. The actual code will all be exactly the same, with the possible exception of the installer images section of the ```tauri.conf.json``` which might need replacing.
 
