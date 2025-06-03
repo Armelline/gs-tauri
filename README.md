@@ -281,7 +281,7 @@ That’s it, you have now successfully converted your game from an HTML5 project
 
 If you've made changes to your game and want to test using ```dev``` again, simply revert the last two changes. 
 
-Ensure you have the latest version of your HTML5 generated game in ```src-tauri/resources```.
+Ensure you have the latest version of your HTML5 generated game in ```src-tauri/resources/game```.
 
 Add this section back into your ```tauri.conf.json```:
 
