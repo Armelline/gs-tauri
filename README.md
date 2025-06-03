@@ -249,9 +249,9 @@ I put an empty ```resources``` directory in already, so just copy your game to i
 | ------------------- | ------------------------ | ----------------------------- |
 | game                | src/resources/game | Game Project. Now compilled into the binary. |
 
-Again, note you want to copy the “default” folder from the “game” folder in your HTML5 project into the “game” folder at ```src/resources```.
+Again, note you want to copy the ```default``` folder from the ```game``` folder in your HTML5 project into the “game” folder at ```src/resources```.
 
-There's no real harm in having your game in both the ```src-tauri/resources``` folder and the ```src/resources``` folder. Only one or the other will ever get used, depending on if you run ```dev``` or ```build```. Just remember to update whichever one you're going to run if you have a new version of your game to test!
+There's no real harm in having your game in both the ```src-tauri/resources/game``` folder and the ```src/resources/game``` folder. Only one or the other will ever get used, depending on if you run ```dev``` or ```build```. Just remember to update whichever one you're going to run if you have a new version of your game to test!
 
 **3. Build the game and installer!** 
 
