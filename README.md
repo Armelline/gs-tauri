@@ -96,9 +96,9 @@ Find this section near the bottom of the file:
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "**com.tauri.dev**",
+      "identifier": "com.tauri.dev",
       "resources": [
-        "resources/**"
+        "resources/"
       ],
 ```
 
