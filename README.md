@@ -195,6 +195,8 @@ Take your 1024x1024 png of your icon and put it in the ```gs-tauri``` folder. Th
 
 Replace imagename.png with the actual name of your image. This will generate all the different icons using your provided image. They'll all be put in ```gs-tauri/src-tauri/icons/``` and you shouldn't move them from there.
 
+*NOTE: Windows caches icons. It is really stubborn about using those cached icons. If you've replaced your icons but your generated .exes are still showing the old icons (or even the previews in Explorer of the icon files are showing the old icons) a restart will flush that icon cache and you should see your new icons.
+
 **2. Installer Images.**
 
 Later in this process, you're going to generate an NSIS installer. You don't strictly have to use it, you can just distribute your .exe file if you want, but it's recommended as it allows for easy installing and uninstalling for the user. There are two places we can customise the look of this installer - the sidebar image and header image. I've included example images in the ```gs-tauri/src-tauri/icons/``` folder which you can use for now if you want to just crack on, but you'll want to add your own custom ones before distributing your game.
