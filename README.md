@@ -289,7 +289,7 @@ Add this section back into your ```tauri.conf.json```:
         "resources/**"
       ],
 
-*NOTE: It must be added back to the same place. It's easiest to just paste it directly below this line:
+*NOTE: It must be added back to the same place.* It's easiest to just paste it directly below this line:
 
     "identifier": "com.tauri.dev",
 
