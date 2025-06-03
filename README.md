@@ -239,7 +239,7 @@ Delete this section near the bottom of the file:
         "resources/**"
       ],
 
-I also recommend you *delete the ```target``` folder that was created in your ```src-tauri``` folder any time you switch between ```dev``` and ```build``` as Tauri caches some files that can lead to misleading tests.
+I also recommend you *delete* the ```target``` folder that was created in your ```src-tauri``` folder any time you switch between ```dev``` and ```build``` as Tauri caches some files that can lead to misleading tests.
 
 **2. Move the ```resources``` folder to the ```src``` folder.**
 
