@@ -218,7 +218,7 @@ Make sure they're named:
     installer-sidebar.bmp
     installer.ico
 
-You can use different names if you want, but you'll need to remember to change the names in the edits to ```tauri.conf.json``` we're going to make in a moment.
+You can use different names if you want, but you'll need to remember to change the names in the edits to ```tauri.conf.json```.
 
 
 ## Full Build with Installer
