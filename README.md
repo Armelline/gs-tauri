@@ -293,7 +293,7 @@ Add this section back into your ```tauri.conf.json```:
 
     "identifier": "com.tauri.dev",
 
-Delete the ```src-tauri/target``` folder before generating again. Cached files can really throw off testing!
+Delete the ```src-tauri/target``` folder before generating again. Cached files can really throw off testing, especially when moving from ```build``` to ```dev```!
 
 
 ## Set-up in the GameSalad project
