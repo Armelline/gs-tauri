@@ -195,7 +195,7 @@ Take your 1024x1024 png of your icon and put it in the ```gs-tauri``` folder. Th
 
 Replace imagename.png with the actual name of your image. This will generate all the different icons using your provided image. They'll all be put in ```gs-tauri/src-tauri/icons/``` and you shouldn't move them from there.
 
-*NOTE: Windows caches icons. It is really stubborn about using those cached icons. If you've replaced your icons but your generated .exes are still showing the old icons (or even the previews in Explorer of the icon files are showing the old icons) a restart will flush that icon cache and you should see your new icons.
+*NOTE: Windows caches icons. It is really stubborn about using those cached icons. If you've replaced your icons but your generated .exes are still showing the old icons (or even the previews in Explorer of the icon files are showing the old icons) a restart will flush that icon cache and you should see your new icons.*
 
 **2. Installer Images.**
 
