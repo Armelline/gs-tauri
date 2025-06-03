@@ -308,7 +308,7 @@ Add a Tweet Sheet behaviour with the text ```EndGame``` in the “Message” sec
 
 For the button to toggle between Fullscreen and Windowed, it’s the exact same process as the Quit button, except we use a slightly different message in the TweetSheet behaviour.
 
-Add a Tweet Sheet behaviour with the text “WindowChange” in the “Message” section. Again it can be anything (except whatever you used for the quit button) as long as you’re consistent in later steps.
+Add a Tweet Sheet behaviour with the text ```WindowChange``` in the “Message” section. Again it can be anything (except whatever you used for the quit button) as long as you’re consistent in later steps.
 
 Don't forget you can also just look at the way the buttons are set up in the [sample project](https://github.com/Armelline/SampleGamesaladProjects/blob/main/TauriButtons.zip).
 
