@@ -86,9 +86,9 @@ Replace the files in each location if they already exist.
 
 Before you can do your first test compilation, you need to make an edit to the ```tauri.conf.json``` file. If you attempt to test the build now, it will fail. There are other edits you’ll need want to make to this file, but those will be explained and added later. For now, the aim is just to get a first test running.
 
-You’ll find the tauri.conf.json file in the ```gs-tauri/src-tauri``` folder.
+You’ll find the ```tauri.conf.json``` file in the ```gs-tauri/src-tauri``` folder.
 
-Open the tauri.conf.json file in your choice of text editor. Just using Notepad is fine.
+Open the ```tauri.conf.json``` file in your choice of text editor. Just using Notepad is fine.
 
 Find this section near the bottom of the file:
 
