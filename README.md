@@ -32,7 +32,7 @@ Navigate into that folder, right click and select “Open Git Bash here”.
 
 A command line window will open. Enter the following command. You can copy and paste, but note that to paste into the Git window you will need to either right click and select “Paste” or use “Shift+Ins” instead of “Ctrl+V”.
 
-```git clone [https://github.com/gamesalad/gs-tauri](https://github.com/Armelline/gs-tauri)```
+```git clone https://github.com/gamesalad/gs-tauri```
 
 **3. Install project pre-requisites.**
 
