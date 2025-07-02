@@ -220,6 +220,16 @@ Make sure they're named:
 
 You can use different names if you want, but you'll need to remember to change the names in the edits to ```tauri.conf.json```.
 
+## Edit the Cargo.toml file
+
+One quick edit is recommended to the Cargo.toml file located in ```gs-tauri/src-tauri```. If you open it up you'll see a section where it says:
+
+```description = "A Tauri App"```
+
+Replace "A Tauri App" with the name of your app, maintaining the quotation marks.
+
+If you don't edit this then opening Task Manager will list your game as "A Tauri App" - so change this to the name of your game. You can also edit the following line, ```authors = ["you"]``` but I'm not certain it's actually used anywhere visible. Do NOT edit the ```edition = "2021"``` as doing so will lead to build errors (unless you make corresponding and unnecessary changes elsewhere, at least).
+
 
 ## Full Build with Installer
 
@@ -276,6 +286,7 @@ For me, that means I want this file:
 Run it to install your game!
 
 That’s it, you have now successfully converted your game from an HTML5 project to a Windows application!
+
 
 **4. Change back to ```dev``` compatibility.**
 
